@@ -1,10 +1,7 @@
 #!/bin/bash
 
-# Ansı Escape
 RED='\033[0;31m'
 RESET='\033[0m'
-
-# ASCII VISEC
 
 ascii_art="
 ${RED}
@@ -26,15 +23,15 @@ message="
 [4] We are dont Forgive.            
           
           
-        ❥ Created by VISEC Team ⛧
+        ❥ Created by YourSecurity Team ⛧
         ➤ VISEC                  
-        ♥ VISECurity             
+        ♥ YourSecurity             
         
         
 __     __          
 \ \   / / #JoinUS  
  \ \ / / #Freedom  
-  \ V / #VISECurity
+  \ V / #YourSecurity
    \_/             
       
 "
@@ -45,17 +42,13 @@ full_message="$ascii_art$message"
 
 IFS=$'\n' read -d '' -r -a lines <<< "$full_message"
 
-# Terminal
 rows=$(tput lines)
 cols=$(tput cols)
 
-# Padding Num
 padding=5
 
-# Ekranı temizle
 clear
 
-# Up
 for ((i=0; i<${#lines[@]} + rows + padding; i++))
 do
   clear
@@ -63,11 +56,9 @@ do
   do
     index=$((i - rows + j))
     if (( index >= 0 && index < ${#lines[@]} )); then
-      # Ekranda ortalanmış mesaj
       tput cup $((j)) $((cols / 2 - ${#lines[index]} / 2))
       echo -e "${lines[index]}"
     fi
   done
-  # Speed
   sleep 0.2
 done
